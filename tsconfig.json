@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "lib": ["esnext.asynciterable", "es7"],
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ES5",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -10,7 +10,8 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "outDir": "lib/src"
+    "outDir": "lib/src",
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/index.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
