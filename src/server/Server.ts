@@ -6,8 +6,11 @@ import * as logger from 'koa-logger'
 import * as helmet from 'koa-helmet'
 import * as graphqlHTTP from 'koa-graphql'
 
-import { schema } from './graphql/schema'
+import { schema } from '../graphql/schema'
 
+type ServerConfig = {
+  port: number
+}
 const app = new Koa()
 const router = new Router()
 
@@ -15,10 +18,11 @@ const graphqlServer = graphqlHTTP({
   schema,
   graphiql: true,
 })
+
 router.all('/graphql', bodyParser(), graphqlServer)
 
-const start = () => {
-  app.listen(5000)
+export function startServer({ port }: ServerConfig) {
+  app.listen(port)
 
   app.use(graphqlServer)
 
@@ -27,6 +31,6 @@ const start = () => {
   app.use(helmet())
 
   app.use(router.routes()).use(router.allowedMethods())
-}
 
-start()
+  console.log(`Server Running at ${port} 🚀`)
+}
