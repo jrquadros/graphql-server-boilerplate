@@ -15,18 +15,18 @@ const graphqlServer = graphqlHTTP({
   schema,
   graphiql: true,
 })
-
 router.all('/graphql', bodyParser(), graphqlServer)
 
 const start = () => {
   app.listen(5000)
+
   app.use(graphqlServer)
+
   app.use(logger())
   app.use(cors())
   app.use(helmet())
-  app.use(router.routes()).use(router.allowedMethods())
 
-  console.log(`Server Running at port: ${5000}`)
+  app.use(router.routes()).use(router.allowedMethods())
 }
 
 start()
