@@ -1,3 +1,6 @@
 import { startServer } from './server/Server'
-
-startServer({ port: 5000 })
+import * as dotenv from 'dotenv'
+;(async () => {
+  dotenv.config()
+  startServer()
+})()

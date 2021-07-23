@@ -5,12 +5,9 @@ import * as bodyParser from 'koa-bodyparser'
 import * as logger from 'koa-logger'
 import * as helmet from 'koa-helmet'
 import * as graphqlHTTP from 'koa-graphql'
-
 import { schema } from '../graphql/schema'
+import { getEnvironment } from './AppConfig'
 
-type ServerConfig = {
-  port: number
-}
 const app = new Koa()
 const router = new Router()
 
@@ -21,7 +18,9 @@ const graphqlServer = graphqlHTTP({
 
 router.all('/graphql', bodyParser(), graphqlServer)
 
-export function startServer({ port }: ServerConfig) {
+export function startServer() {
+  const { port } = getEnvironment()
+
   app.listen(port)
 
   app.use(graphqlServer)
