@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  pg-database:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: '${DB_USER}'
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
+      POSTGRES_DB: '${POSTGRES_DB}'
+    ports:
+      - '$POSTGRES_PORT'
+    volumes:
+      - $HOME/docker/pg
+    networks:
+      - postgres-compose-network
+    env_file:
+      - .env
+
+networks:
+  postgres-compose-network:
+    driver: bridge

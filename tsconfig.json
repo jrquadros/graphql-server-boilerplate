@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext.asynciterable", "es7"],
+    "target": "ES5",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "outDir": "lib/src",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/Index.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
