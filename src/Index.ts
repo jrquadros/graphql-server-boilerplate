@@ -1,6 +1,8 @@
-import { startServer } from './server/Server'
 import * as dotenv from 'dotenv'
-;(async () => {
-  dotenv.config()
-  startServer()
+
+import { startServer } from './server/Server'
+
+(async () => {
+	dotenv.config()
+	startServer()
 })()

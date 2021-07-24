@@ -35,7 +35,8 @@
     "koa-logger": "^3.2.1"
   },
   "scripts": {
-    "dev": "webpack --watch --config ./webpack.config.dev.js",
-    "build": "webpack --config ./webpack.config.prod.js"
+    "lint": "eslint . --ext .ts --fix",
+    "dev": "yarn lint && webpack --watch --config ./webpack.config.dev.js",
+    "build": "yarn lint && webpack --config ./webpack.config.prod.js"
   }
 }

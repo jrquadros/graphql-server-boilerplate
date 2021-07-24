@@ -1,3 +1,6 @@
-export const getEnvironment = () => ({
-  port: process.env.PORT,
+type AppConfig = {
+	portNumber?: string | number 
+}
+export const getEnvironment = (): AppConfig => ({
+	portNumber: process.env.PORT,
 })
