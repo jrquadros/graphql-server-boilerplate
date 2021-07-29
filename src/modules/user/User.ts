@@ -1,19 +1,17 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-export class User {
-  id: string
-  firstName: string
-  lastName: string
-  email: string
+import { Column, Entity, PrimaryColumn } from 'typeorm'
 
-  constructor(data: User) {
-  	const { firstName, lastName, id, email } = data
-  	this.firstName = firstName
-  	this.lastName = lastName
-  	this.id = id
-  	this.email = email
-  }
+@Entity()
+export class User {
+	@PrimaryColumn()
+	id: string
+	@Column({ length: 100, type: 'varchar' })
+	firstName: string
+	@Column('varchar')
+	lastName: string
+	@Column({ length: 100, type: 'varchar' })
+	email: string
 }
 
 export const users: User[] = [
-	{ email: 'usertest@gmail.com', firstName: 'User', id: '_id', lastName: 'user last name' },
+	{ email: 'usertest@gmail.com', firstName: 'User', id: '1ad123', lastName: 'user last name' },
 ]

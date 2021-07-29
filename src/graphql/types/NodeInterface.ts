@@ -1,7 +1,7 @@
 import { User, users } from '../../modules/user/User'
 import { fromGlobalId, nodeDefinitions } from 'graphql-relay'
 
-import {UserType} from '../../modules/user/UserType'
+import { UserType } from '../../modules/user/UserType'
 
 const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
 	async (globalId: string) => {
@@ -13,7 +13,7 @@ const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
 	(obj) => {
 		if (obj instanceof User) return UserType
 		return null
-	}
+	},
 )
 
 export const NodeInterface = nodeInterface

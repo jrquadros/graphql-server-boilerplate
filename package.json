@@ -10,6 +10,7 @@
 		"@types/koa-logger": "^3.1.1",
 		"@types/koa__cors": "^3.0.2",
 		"@types/node": "^15.0.2",
+		"@types/pg": "^8.6.1",
 		"@typescript-eslint/eslint-plugin": "^4.22.1",
 		"@typescript-eslint/parser": "^4.22.1",
 		"eslint": "^7.26.0",
@@ -37,7 +38,10 @@
 		"koa-bodyparser": "^4.3.0",
 		"koa-graphql": "^0.8.0",
 		"koa-helmet": "^6.1.0",
-		"koa-logger": "^3.2.1"
+		"koa-logger": "^3.2.1",
+		"pg": "^8.7.1",
+		"reflect-metadata": "^0.1.13",
+		"typeorm": "^0.2.34"
 	},
 	"lint-staged": {
 		"*.ts": [
@@ -51,8 +55,8 @@
 		"dev": "yarn lint && webpack --watch --config ./webpack.config.dev.js",
 		"build": "yarn lint && webpack --config ./webpack.config.prod.js",
 		"lint:staged": "lint-staged",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+		"postinstall": "husky install",
+		"prepublishOnly": "pinst --disable",
+		"postpublish": "pinst --enable"
 	}
 }

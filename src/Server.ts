@@ -1,11 +1,17 @@
+import 'reflect-metadata'
+
 import * as dotenv from 'dotenv'
 
 import { App } from './server/App'
+import { CreateDatabaseConnection } from './database/CreateDatabaseConnection'
 import { getEnvironment } from './server/AppConfig'
 
-;(async () => {
+;(async function start() {
 	dotenv.config()
-	const { portNumber } = getEnvironment()
-	App.listen(portNumber)
-	console.log(`Server Running at ${portNumber} 🚀`)
+	const { PORT } = getEnvironment()
+
+	await CreateDatabaseConnection()
+
+	App.listen(PORT)
+	console.log(`Server Running at ${PORT} 🚀`)
 })()
