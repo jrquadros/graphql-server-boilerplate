@@ -41,7 +41,8 @@
 		"koa-logger": "^3.2.1",
 		"pg": "^8.7.1",
 		"reflect-metadata": "^0.1.13",
-		"typeorm": "^0.2.34"
+		"typeorm": "^0.2.34",
+		"uid": "^2.0.0"
 	},
 	"lint-staged": {
 		"*.ts": [
