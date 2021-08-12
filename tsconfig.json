@@ -13,6 +13,6 @@
     "outDir": "lib/src",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/Index.ts"],
+  "include": ["src/Server.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

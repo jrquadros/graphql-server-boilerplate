@@ -7,7 +7,7 @@ const WebpackReloadServerPlugin = require('./webpack/ReloadServerPlugin')
 const filename = 'server_bundle.js'
 
 module.exports = {
-	entry: './src/Index.ts',
+	entry: './src/Server.ts',
 	plugins: [new WebpackReloadServerPlugin({ script: path.resolve('dist', filename) })],
 	mode: 'development',
 	target: 'node',
