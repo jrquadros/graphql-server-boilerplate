@@ -55,7 +55,7 @@
 		"clean": "rm -rf dist",
 		"lint": "eslint . --ext .ts --fix",
 		"dev": "NODE_ENV=development yarn lint && webpack --watch --config ./webpack.config.dev.js",
-		"build": "NODE_ENV=production yarn lint && webpack --config ./webpack.config.prod.js",
+		"build": "NODE_ENV=production webpack --config ./webpack.config.prod.js",
 		"lint:staged": "lint-staged",
 		"postinstall": "husky install",
 		"prepublishOnly": "pinst --disable",
