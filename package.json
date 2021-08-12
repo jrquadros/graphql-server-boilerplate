@@ -2,6 +2,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^12.1.4",
 		"@commitlint/config-conventional": "^12.1.4",
+		"@types/dotenv": "^8.2.0",
 		"@types/graphql-relay": "^0.6.0",
 		"@types/koa": "^2.13.1",
 		"@types/koa-bodyparser": "^4.3.0",
@@ -53,8 +54,8 @@
 	"scripts": {
 		"clean": "rm -rf dist",
 		"lint": "eslint . --ext .ts --fix",
-		"dev": "yarn lint && webpack --watch --config ./webpack.config.dev.js",
-		"build": "yarn lint && webpack --config ./webpack.config.prod.js",
+		"dev": "NODE_ENV=development yarn lint && webpack --watch --config ./webpack.config.dev.js",
+		"build": "NODE_ENV=production yarn lint && webpack --config ./webpack.config.prod.js",
 		"lint:staged": "lint-staged",
 		"postinstall": "husky install",
 		"prepublishOnly": "pinst --disable",

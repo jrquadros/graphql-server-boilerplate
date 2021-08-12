@@ -18,8 +18,6 @@ const graphqlServer = graphqlHTTP({
 
 router.all('/graphql', bodyParser(), graphqlServer)
 
-// export function startServer(): void {
-
 app.use(graphqlServer)
 
 app.use(logger())
@@ -27,7 +25,5 @@ app.use(cors())
 app.use(helmet())
 
 app.use(router.routes()).use(router.allowedMethods())
-
-// }
 
 export const App = app
