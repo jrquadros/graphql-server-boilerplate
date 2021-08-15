@@ -1,31 +1,15 @@
-import * as Koa from 'koa'
-import * as Router from '@koa/router'
-import * as bodyParser from 'koa-bodyparser'
-import * as cors from '@koa/cors'
-import * as graphqlHTTP from 'koa-graphql'
-import * as helmet from 'koa-helmet'
-import * as logger from 'koa-logger'
+import * as express from 'express'
 
+import ExpressPlayground from 'graphql-playground-middleware-express'
+import { graphqlHTTP } from 'express-graphql'
 import { schema } from '../graphql/schema'
 
-export type Context = Koa.Context
+const app = express()
 
-const app = new Koa()
-const router = new Router()
+const graphql = graphqlHTTP({ schema, graphiql: false })
 
-const graphqlServer = graphqlHTTP({
-	schema,
-	graphiql: true,
-})
+app.use('/graphql', graphql)
 
-router.all('/graphql', bodyParser(), graphqlServer)
-
-app.use(graphqlServer)
-
-app.use(logger())
-app.use(cors())
-app.use(helmet())
-
-app.use(router.routes()).use(router.allowedMethods())
+app.get('/playground', ExpressPlayground({ endpoint: '/graphql' }))
 
 export const App = app
