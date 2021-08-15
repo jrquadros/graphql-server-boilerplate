@@ -15,7 +15,7 @@ type AppConfig = {
 	POSTGRES_PASSWORD_TEST: string
 }
 
-export const getEnvironment = (): AppConfig => ({
+const environment: AppConfig = {
 	NODE_ENV: process.env.NODE_ENV as string,
 	PORT: process.env.PORT as string,
 	DB_USER: process.env.DB_USER as string,
@@ -26,4 +26,6 @@ export const getEnvironment = (): AppConfig => ({
 	POSTGRES_DB_TEST: process.env.POSTGRES_TEST_DB as string,
 	POSTGRES_PASSWORD_TEST: process.env.POSTGRES_TEST_PASSWORD as string,
 	HOST_TEST: process.env.HOST_TEST as string,
-})
+}
+
+export const getEnvironment = (): AppConfig => environment
