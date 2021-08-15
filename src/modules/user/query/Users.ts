@@ -1,14 +1,13 @@
 import { GraphQLFieldConfigMap, GraphQLNonNull } from 'graphql'
 import { connectionArgs, connectionDefinitions, connectionFromArray } from 'graphql-relay'
 
-import { Context } from '../../../server/App'
 import { UserType } from '../UserType'
 import { Users } from '../User'
 import { getConnection } from 'typeorm'
 
 const UserConnectionDefinitions = connectionDefinitions({ name: 'User', nodeType: UserType })
 
-export const UsersQuery: GraphQLFieldConfigMap<Users, Context> = {
+export const UsersQuery: GraphQLFieldConfigMap<Users, unknown> = {
 	Users: {
 		type: GraphQLNonNull(UserConnectionDefinitions.connectionType),
 		args: connectionArgs,
