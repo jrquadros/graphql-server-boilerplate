@@ -8,6 +8,8 @@ import * as logger from 'koa-logger'
 
 import { schema } from '../graphql/schema'
 
+export type Context = Koa.Context
+
 const app = new Koa()
 const router = new Router()
 

@@ -1,9 +1,8 @@
 import { GraphQLNonNull, GraphQLString } from 'graphql'
 
-import { CreateDatabaseConnection } from '../../../database/CreateDatabaseConnection'
 import { UserType } from '../UserType'
 import { Users } from '../User'
-// import { User } from '../User'
+import { getConnection } from 'typeorm'
 import { mutationWithClientMutationId } from 'graphql-relay'
 
 type UserRegistrationArgs = {
@@ -33,21 +32,21 @@ export const UserRegistration = mutationWithClientMutationId({
 		user: {
 			type: UserType,
 			resolve: (payload: Users) => {
-				console.log(payload, 'PAYLOAD')
 				return payload
 			},
 		},
 	},
 	mutateAndGetPayload: async ({ firstName, lastName, email }: UserRegistrationArgs) => {
-		const connection = await CreateDatabaseConnection()
+		try {
+			const connection = getConnection()
+			const userRepository = connection.getRepository(Users)
+			const user = new Users(firstName, lastName, email)
+			await userRepository.save(user)
 
-		const userRepository = connection.getRepository(Users)
-
-		const user = new Users(firstName, lastName, email)
-
-		await userRepository.save(user)
-		await connection.close()
-
-		return user
+			return user
+		} catch (error) {
+			console.log(error)
+			throw new Error(error)
+		}
 	},
 })
