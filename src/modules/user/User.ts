@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm'
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm'
 
 import { uid } from 'uid'
 
@@ -6,11 +6,14 @@ import { uid } from 'uid'
 export class Users {
 	@PrimaryColumn()
 	id: string
+
+	@PrimaryGeneratedColumn()
+	_id: number
 	@Column({ length: 100, type: 'varchar' })
 	firstName: string
 	@Column('varchar')
 	lastName: string
-	@Column({ length: 100, type: 'varchar' })
+	@Column({ length: 100, type: 'varchar', unique: true })
 	email: string
 
 	constructor(firstName: string, lastName: string, email: string) {
@@ -20,7 +23,3 @@ export class Users {
 		this.email = email
 	}
 }
-
-export const users: Users[] = [
-	{ email: 'usertest@gmail.com', firstName: 'User', id: '1ad123', lastName: 'user last name' },
-]
