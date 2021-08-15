@@ -33,6 +33,7 @@ export const CreateDatabaseConnection = async (): Promise<Connection> => {
 			password: isTest ? POSTGRES_PASSWORD_TEST : POSTGRES_PASSWORD,
 			host: isTest ? HOST_TEST : HOST,
 			entities: [Users],
+			synchronize: true,
 		}
 
 		return await createConnection(connectionOptions)
