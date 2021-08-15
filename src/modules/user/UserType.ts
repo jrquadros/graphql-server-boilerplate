@@ -1,13 +1,18 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql'
-import { connectionDefinitions, globalIdField } from 'graphql-relay'
+import { GraphQLInt, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql'
 
 import { NodeInterface } from '../../graphql/types/NodeInterface'
+import { Users } from './User'
+import { globalIdField } from 'graphql-relay'
 
-export const UserType: GraphQLObjectType = new GraphQLObjectType({
+export const UserType: GraphQLObjectType = new GraphQLObjectType<Users>({
 	name: 'User',
 	description: 'User',
 	fields: () => ({
 		id: globalIdField('User'),
+		_id: {
+			type: GraphQLNonNull(GraphQLInt),
+			resolve: ({ _id }) => _id,
+		},
 		firstName: {
 			type: GraphQLNonNull(GraphQLString),
 			resolve: ({ firstName }) => firstName,
@@ -23,5 +28,3 @@ export const UserType: GraphQLObjectType = new GraphQLObjectType({
 	}),
 	interfaces: () => [NodeInterface],
 })
-
-export const UserConnection = connectionDefinitions({ name: 'User', nodeType: UserType })
